@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>822716013306-cth2oi5ivlss8boh5hj8m5t8gqa2uasb.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.822716013306-cth2oi5ivlss8boh5hj8m5t8gqa2uasb</string>
+	<key>ANDROID_CLIENT_ID</key>
+	<string>822716013306-1k6i51r5aj762u13rl1ckne65osgo6tr.apps.googleusercontent.com</string>
+	<key>API_KEY</key>
+	<string>AIzaSyCdNxOdVApIYhhaSOwpmQ3duvODiH3wjos</string>
+	<key>GCM_SENDER_ID</key>
+	<string>822716013306</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.example.antInfluncer</string>
+	<key>PROJECT_ID</key>
+	<string>antamit-e2b26</string>
+	<key>STORAGE_BUCKET</key>
+	<string>antamit-e2b26.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:822716013306:ios:01e9a328bc6e2c485d4743</string>
+</dict>
+</plist>
