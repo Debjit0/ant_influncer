@@ -1,7 +1,15 @@
-import 'package:ant_influncer/homepage/homepage.dart';
-import 'package:flutter/material.dart';
 
-void main() {
+import 'package:ant_influncer/theme/constants/project_colors.dart';
+import 'package:ant_influncer/view_models/auth_provider.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
+import 'Splash Screen/splash_screen.dart';
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   runApp(const MyApp());
 }
 
@@ -11,13 +19,22 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(
+          create: (ctx) => AuthProvider(),
+        ),
+      ],
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        title: 'Flutter Demo',
+        theme: ThemeData(
+          scaffoldBackgroundColor: Colors.black87,
+          colorScheme: ColorScheme.fromSeed(seedColor: cYellow),
+          useMaterial3: true,
+        ),
+        home: SplashScreen()
       ),
-      home: HomePage()
     );
   }
 }
