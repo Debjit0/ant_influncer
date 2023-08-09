@@ -1,8 +1,11 @@
 import 'dart:io';
 
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
+
+
 
 class UploadAadharProvider extends ChangeNotifier {
   String _message = "";
@@ -18,7 +21,7 @@ class UploadAadharProvider extends ChangeNotifier {
     _message = "";
   }
 
-  void addAadhar({
+  Future addAadhar({
     File? aadharFront,
     File? aadharBack,
     String? uid,

@@ -107,14 +107,15 @@ class _AadharState extends State<Aadhar> {
                       child: FilledButton.tonal(
                         onPressed: () async {
                           final uid = FirebaseAuth.instance.currentUser!.uid;
-                          UploadAadharProvider().addAadhar(
+                          await UploadAadharProvider().addAadhar(
                               uid: uid,
                               aadharFront: File(aadharFront),
                               aadharBack: File(aadharBack),
                               firstName: _authProvider.firstName,
                               lastName: _authProvider.lastName,
-                              email: _authProvider.email);
-                          nextPageOnly(context: context, page: CheckVerify());
+                              email: _authProvider.email,
+                              ).whenComplete(() => nextPageOnly(context: context, page: CheckVerify()));
+                          
                         },
                         child: const Row(
                           mainAxisSize: MainAxisSize.min,

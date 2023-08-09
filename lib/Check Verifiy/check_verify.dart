@@ -1,3 +1,4 @@
+import 'package:ant_influncer/homepage/homepage.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -13,18 +14,21 @@ class CheckVerify extends StatefulWidget {
 }
 
 class _CheckVerifyState extends State<CheckVerify> {
-  String accType = "";
+
+  bool isVerified= false;
   @override
   void initState() {
     // TODO: implement initState
+    getVerificationStatus();
     super.initState();
-    getAccType();
+    //getVerificationStatus();
   }
 
-  @override
+    @override
   Widget build(BuildContext context) {
     return
-    accType=='influncer'?
+    isVerified==false?
+    
     Scaffold(
         body: Column(
       mainAxisAlignment: MainAxisAlignment.center,
@@ -39,19 +43,20 @@ class _CheckVerifyState extends State<CheckVerify> {
               nextPageOnly(context: context, page: LoginScreen());
             },
             child: Text("Logout")),
+        ElevatedButton(onPressed: (){setState(() {
+          
+        });}, child: Text("Refresh"))
       ],
     ),):
-    Scaffold(
-      body: Center(child: Text("Download the $accType app")),
-    );
+    HomePage();
   }
 
-  Future getAccType() async {
+  Future getVerificationStatus() async {
     DocumentSnapshot document = await FirebaseFirestore.instance
         .collection('Users')
         .doc(FirebaseAuth.instance.currentUser!.uid)
         .get();
-    accType = document['accounttype'];
-    print(accType);
+    isVerified = document['isverified'];
+    print(isVerified);
   }
 }
