@@ -69,7 +69,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     Text.rich(
                       textAlign: TextAlign.center,
                       TextSpan(
-                        text: 'Welcome back, '.toUpperCase(),
+                        text: 'Welcome back '.toUpperCase(),
                         style: TextStyle(
                           fontSize: 32,
                           fontWeight: FontWeight.w400,
@@ -79,7 +79,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         ),
                         children: [
                           TextSpan(
-                            text: 'Debjit'.toUpperCase(),
+                            text: ''.toUpperCase(),
                             style: TextStyle(
                               fontSize: 32,
                               letterSpacing: 2,
