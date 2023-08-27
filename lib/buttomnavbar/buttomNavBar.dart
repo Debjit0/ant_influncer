@@ -32,7 +32,7 @@ class _NavBarState extends State<NavBar> {
             NavigationDestination(
               selectedIcon: Icon(Icons.list_alt),
               icon: Icon(Icons.list_alt_outlined),
-              label: 'Programs',
+              label: 'My Programs',
             ),
             NavigationDestination(
               selectedIcon: Icon(Icons.list),

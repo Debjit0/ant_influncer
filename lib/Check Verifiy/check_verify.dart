@@ -20,16 +20,17 @@ class _CheckVerifyState extends State<CheckVerify> {
   @override
   void initState() {
     // TODO: implement initState
-    getVerificationStatus();
+    //super.initState();
+    
+    getVerificationStatus().then((value) => setState(() {},));
+   
     super.initState();
     //getVerificationStatus();
   }
-
     @override
   Widget build(BuildContext context) {
     return
     isVerified==false?
-    
     Scaffold(
         body: Column(
       mainAxisAlignment: MainAxisAlignment.center,
@@ -52,12 +53,13 @@ class _CheckVerifyState extends State<CheckVerify> {
     NavBar();
   }
 
-  Future getVerificationStatus() async {
+  Future<bool> getVerificationStatus() async {
     DocumentSnapshot document = await FirebaseFirestore.instance
         .collection('Users')
         .doc(FirebaseAuth.instance.currentUser!.uid)
         .get();
     isVerified = document['isverified'];
     print(isVerified);
+    return isVerified;
   }
 }
