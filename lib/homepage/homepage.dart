@@ -1,5 +1,7 @@
 import 'dart:io';
 
+import 'package:ant_influncer/add%20program/addprogram.dart';
+import 'package:ant_influncer/utils/routers.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -37,6 +39,7 @@ class _HomePageState extends State<HomePage> {
               child: Text("Export")),
         ],
       ),
+      floatingActionButton: FloatingActionButton(onPressed: (){nextPage(context: context, page: AddProgram());}, child: Icon(Icons.add),) ,
     );
   }
 
@@ -61,7 +64,7 @@ class _HomePageState extends State<HomePage> {
   }
 
   exportCsv() async {
-    CollectionReference leads = FirebaseFirestore.instance.collection('leads');
+    CollectionReference leads = FirebaseFirestore.instance.collection('leads').doc(FirebaseAuth.instance.currentUser!.uid).collection('leads');
     final myData = csv;
     List<List<dynamic>> csvTable = CsvToListConverter().convert(myData);
     List<List<dynamic>> data = [];

@@ -1,3 +1,4 @@
+import 'package:ant_influncer/buttomnavbar/buttomNavBar.dart';
 import 'package:ant_influncer/homepage/homepage.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -48,7 +49,7 @@ class _CheckVerifyState extends State<CheckVerify> {
         });}, child: Text("Refresh"))
       ],
     ),):
-    HomePage();
+    NavBar();
   }
 
   Future getVerificationStatus() async {
