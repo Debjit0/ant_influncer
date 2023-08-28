@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:ant_influncer/add%20program/addprogram.dart';
+import 'package:ant_influncer/program%20details%20page/programdetails.dart';
 import 'package:ant_influncer/utils/routers.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:file_picker/file_picker.dart';
@@ -50,7 +51,7 @@ class _HomePageState extends State<HomePage> {
                     children: 
                       List.generate(data.length, (index){
                         return GestureDetector(
-                          onTap: (){},
+                          onTap: (){nextPage(context: context, page: ProgramDetails(id:  snapshot.data!.docs[index].id,progName:  snapshot.data!.docs[index].get("program name"),));},
                           child: Container(
                             decoration: BoxDecoration(color: Colors.blueGrey),
                             child : Padding(

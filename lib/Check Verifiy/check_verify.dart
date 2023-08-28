@@ -15,42 +15,48 @@ class CheckVerify extends StatefulWidget {
 }
 
 class _CheckVerifyState extends State<CheckVerify> {
-
-  bool isVerified= false;
+  bool conditions = false;
+  bool isVerified = false;
+  String accounttype = "";
   @override
   void initState() {
     // TODO: implement initState
     //super.initState();
-    
-    getVerificationStatus().then((value) => setState(() {},));
-   
+
+    getVerificationStatus().then((value) => setState(
+          () {},
+        ));
+
     super.initState();
     //getVerificationStatus();
   }
-    @override
+
+  @override
   Widget build(BuildContext context) {
-    return
-    isVerified==false?
-    Scaffold(
-        body: Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        Text(
-          "Wait until u get verified",
-          style: TextStyle(color: Colors.white),
-        ),
-        ElevatedButton(
-            onPressed: () {
-              FirebaseAuth.instance.signOut();
-              nextPageOnly(context: context, page: LoginScreen());
-            },
-            child: Text("Logout")),
-        ElevatedButton(onPressed: (){setState(() {
-          
-        });}, child: Text("Refresh"))
-      ],
-    ),):
-    NavBar();
+    return conditions == false
+        ? Scaffold(
+            body: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  "Wait until u get verified, And make sure you are using the current app, if you are a closer or a manager please use the respective app. This App is only for Influencers",
+                  style: TextStyle(color: Colors.white),
+                ),
+                ElevatedButton(
+                    onPressed: () {
+                      FirebaseAuth.instance.signOut();
+                      nextPageOnly(context: context, page: LoginScreen());
+                    },
+                    child: Text("Logout")),
+                ElevatedButton(
+                    onPressed: () {
+                      setState(() {});
+                    },
+                    child: Text("Refresh"))
+              ],
+            ),
+          )
+        : NavBar();
   }
 
   Future<bool> getVerificationStatus() async {
@@ -59,7 +65,13 @@ class _CheckVerifyState extends State<CheckVerify> {
         .doc(FirebaseAuth.instance.currentUser!.uid)
         .get();
     isVerified = document['isverified'];
-    print(isVerified);
-    return isVerified;
+    accounttype = document["accounttype"];
+    if (isVerified == true && accounttype == "influencer") {
+      conditions = true;
+      return true;
+    } else {
+      conditions = false;
+      return false;
+    }
   }
 }
