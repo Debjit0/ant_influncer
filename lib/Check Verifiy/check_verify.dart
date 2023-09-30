@@ -39,7 +39,7 @@ class _CheckVerifyState extends State<CheckVerify> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
-                  "Wait until u get verified, And make sure you are using the current app, if you are a closer or a manager please use the respective app. This App is only for Influencers",
+                  "Wait until u get verified, And make sure you are using the influencer app, if you are a closer or a manager please use the respective app. This App is only for Influencers.",
                   style: TextStyle(color: Colors.white),
                 ),
                 ElevatedButton(
