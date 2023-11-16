@@ -50,7 +50,7 @@ class _CheckVerifyState extends State<CheckVerify> {
                     child: Text("Logout")),
                 ElevatedButton(
                     onPressed: () {
-                      setState(() {});
+                      getVerificationStatus();
                     },
                     child: Text("Refresh"))
               ],
@@ -60,6 +60,7 @@ class _CheckVerifyState extends State<CheckVerify> {
   }
 
   Future<bool> getVerificationStatus() async {
+    print(FirebaseAuth.instance.currentUser!.uid);
     DocumentSnapshot document = await FirebaseFirestore.instance
         .collection('Users')
         .doc(FirebaseAuth.instance.currentUser!.uid)
